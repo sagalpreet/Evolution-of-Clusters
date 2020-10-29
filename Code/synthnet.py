@@ -1,5 +1,7 @@
 import random
 import networkx as nx
+import numpy as np
+
 
 def Clauset_Network(num_vertices, num_communities, cross_community_edges):
     '''
@@ -55,3 +57,61 @@ def Clauset_Network(num_vertices, num_communities, cross_community_edges):
     Edges = list(Edges)
 
     return Vertices, Edges, communities
+
+
+def add_feature_vector(G, d):
+    '''
+    Takes as input: a networkx graph and a list specifying the type of distribution as key and repuired parameters as values
+    Gives output: a networkx graph with feature vector for each node labelled as feature and can be accessed using G.nodes[i]['feature']
+    '''
+
+    '''
+    Distributions: 'normal', 'power', 'uniform'
+    example: [('uniform', (lower, upper)), ('uniform', (lower, upper)), ('power', (a, lower, upper)), ('normal', (mean, deviation)), ('uniform', (lower, upper))] is a valid value for argument d
+    '''
+
+    '''
+    Uniform and Power distribution will make characterstic value lie in range (lower, upper)
+    but values for normal distribution characteristic depends on mean and deviation input
+    '''
+
+    '''
+    This function adds feature vector to the graph
+    Feature vector is a numpy array
+    '''
+
+    num_vertices = len(G.nodes)
+    samples = []
+    for i in d:
+        if i[0] == 'uniform':
+            lower = i[1][0]
+            upper = i[1][1]
+            sample = [np.random.uniform(lower, upper)
+                      for i in range(num_vertices)]
+        elif i[0] == 'power':
+            a = i[1][0]
+            lower = i[1][1]
+            upper = i[1][2]
+            sample = np.random.power(a, num_vertices)
+            for j in range(num_vertices):
+                sample[j] = sample[j] * (upper - lower) + lower
+        elif i[0] == 'normal':
+            mean = i[1][0]
+            deviation = i[1][1]
+            sample = np.random.normal(mean, deviation, num_vertices)
+        else:
+            raise Exception(i[0] + "is not a valid distribution type")
+
+        samples.append(list(sample))
+
+    x = 0
+    for i in G.nodes:
+        feature = []
+        for it in range(5):
+            feature.append(samples[it][x])
+        x += 1
+
+        feature = np.array(feature)
+        G.nodes[i]['feature'] = feature
+
+    return G
