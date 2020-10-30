@@ -80,7 +80,7 @@ def add_feature_vector(G, d):
     Feature vector is a numpy array
     '''
 
-    num_vertices = len(G.nodes)
+    num_vertices = G.number_of_nodes()
     samples = []
     for i in d:
         if i[0] == 'uniform':
