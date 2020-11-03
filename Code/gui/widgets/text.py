@@ -20,6 +20,14 @@ class Text():
         self.sticky = Alignment.get_sticky_value_from_alignment(alignment)
         self.show()
 
+    def get_text(self):
+        return self.text
+    
+    def set_text(self, text):
+        self.text = text
+        if self.__tk_object:
+            self.__tk_object['text'] = self.text
+
     def is_hidden(self):
         return self.hidden_status
 
