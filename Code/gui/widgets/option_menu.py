@@ -12,6 +12,7 @@ class OptionMenu():
         self.values = values
         self.selected_index = selected_index
         self.callback = callback
+        self.hidden_status = True
 
     def __make_callback(self):
         if self.callback:
@@ -23,8 +24,10 @@ class OptionMenu():
                 value=self.values[self.selected_index])
             self.__tk_object = tk.OptionMenu(
                 window, self.__tk_variable, *self.values, command=lambda x: self.__make_callback())
-        self.__tk_object.grid(
-            row=row, column=column, sticky=Alignment.get_sticky_value_from_alignment(alignment))
+        self.row = row
+        self.column = column
+        self.sticky = Alignment.get_sticky_value_from_alignment(alignment)
+        self.show()
 
     def get_value(self):
         if(self.__tk_variable):
@@ -37,6 +40,19 @@ class OptionMenu():
             return (selected_index, selected_value)
         else:
             return self.selected_index, self.values[self.selected_index]
+
+    def is_hidden(self):
+        return self.hidden_status
+
+    def hide(self):
+        if self.__tk_object:
+            self.__tk_object.grid_forget()
+        self.hidden_status = True
+
+    def show(self):
+        if self.__tk_object:
+            self.__tk_object.grid(row=self.row, column=self.column, sticky=self.sticky)
+            self.hidden_status = False
 
     def is_disabled(self):
         return self.__tk_object['state'] == tk.DISABLED
