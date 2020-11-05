@@ -9,43 +9,37 @@ class Text():
         self.text = text
         self.width = width
         self.height = height
-        self.__tk_object = None
+        self.hidden_status = True
 
     def makeTkObject(self, window, row, column, alignment):
         if(not self.__tk_object):
             self.__tk_object = tk.Label(
                 window, text=self.text, width=self.width, height=self.height)
-        self.__tk_object.grid(
-            row=row, column=column, sticky=Alignment.get_sticky_value_from_alignment(alignment))
+        self.row = row
+        self.column = column
+        self.sticky = Alignment.get_sticky_value_from_alignment(alignment)
+        self.show()
 
-    def is_disabled(self):
-        return self.__tk_object['state'] == tk.DISABLED
-
-    def is_enabled(self):
-        return not self.is_disabled()
-
-    def disable(self):
-        if(self.__tk_object):
-            self.__tk_object['state'] = tk.DISABLED
-
-    def enable(self):
-        if(self.__tk_object):
-            self.__tk_object['state'] = tk.NORMAL
-
-class MultilineText():
-
-    __tk_object = None
-
-    def __init__(self, text, width=None, height=None):
+    def get_text(self):
+        return self.text
+    
+    def set_text(self, text):
         self.text = text
-        self.width = width
-        self.height = height
-        self.__tk_object = None
+        if self.__tk_object:
+            self.__tk_object['text'] = self.text
 
-    def makeTkObject(self, window, row, column, alignment):
-        if(not self.__tk_object):
-            self.__tk_object = tk.Message(window, text=self.text, width=self.width, height=self.height)
-        self.__tk_object.grid(row=row, column=column, sticky=Alignment.get_sticky_value_from_alignment(alignment))
+    def is_hidden(self):
+        return self.hidden_status
+
+    def hide(self):
+        if self.__tk_object:
+            self.__tk_object.grid_forget()
+        self.hidden_status = True
+
+    def show(self):
+        if self.__tk_object:
+            self.__tk_object.grid(row=self.row, column=self.column, sticky=self.sticky)
+            self.hidden_status = False
 
     def is_disabled(self):
         return self.__tk_object['state'] == tk.DISABLED
