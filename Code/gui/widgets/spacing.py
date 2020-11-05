@@ -4,9 +4,10 @@ class Spacing():
 
     __tk_object = None
 
-    def __init__(self, width, height):
+    def __init__(self, width, height, hidden=False):
         self.width = width
         self.height = height
+        self.initially_hidden = hidden
         self.hidden_status = True
 
     def makeTkObject(self, window, row, column, alignment):
@@ -15,7 +16,8 @@ class Spacing():
         self.row = row
         self.column = column
         self.sticky = Alignment.get_sticky_value_from_alignment(alignment)
-        self.show()
+        if not self.initially_hidden:
+            self.show()
 
     def is_hidden(self):
         return self.hidden_status

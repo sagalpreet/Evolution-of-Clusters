@@ -3,6 +3,7 @@ from .utils import tk, Alignment
 from .widgets.button import Button
 from .widgets.check_box import CheckBox
 from .widgets.grid import Grid
+from .widgets.list_box import ListBox
 from .widgets.option_menu import OptionMenu
 from .widgets.slider import Slider
 from .widgets.spacing import Spacing

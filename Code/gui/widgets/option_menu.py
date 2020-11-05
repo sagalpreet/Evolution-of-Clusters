@@ -6,11 +6,12 @@ class OptionMenu():
     __tk_object = None
     __tk_variable = None
 
-    def __init__(self, values, selected_index=0, callback=None):
+    def __init__(self, values, selected_index=0, hidden=False, callback=None):
         assert len(values) > 0, "Provide at least one value for OptionsMenu"
         assert len(values) > selected_index >= 0, "Selected index out of bounds"
         self.values = values
         self.selected_index = selected_index
+        self.initially_hidden = hidden
         self.callback = callback
         self.hidden_status = True
 
@@ -27,7 +28,8 @@ class OptionMenu():
         self.row = row
         self.column = column
         self.sticky = Alignment.get_sticky_value_from_alignment(alignment)
-        self.show()
+        if not self.initially_hidden:
+            self.show()
 
     def get_value(self):
         if(self.__tk_variable):

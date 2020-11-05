@@ -1,26 +1,29 @@
 from ..utils import tk, Alignment
 
+class ListBox():
 
-class Button():
+    __tk_object = None
 
-    __tk_object: tk.Button = None
-
-    def __init__(self, text, width=None, height=None, hidden=False, callback=None):
-        self.text = text
+    def __init__(self, values, selected_index=0, width=None, height=None, hidden=False, callback=None):
+        assert len(values)>0, "Provide at least one value for OptionsMenu"
+        assert len(values)>selected_index>=0, "Selected index out of bounds"
+        self.values = values
+        self.selected_index = selected_index
         self.width = width
         self.height = height
         self.initially_hidden = hidden
         self.callback = callback
-        self.hidden_status = True
 
     def __make_callback(self):
-        if(self.callback):
-            self.callback()
+        if self.callback:
+            self.callback(*self.get_value())
 
     def makeTkObject(self, window, row, column, alignment):
         if(not self.__tk_object):
-            self.__tk_object = tk.Button(
-                window, text=self.text, width=self.width, height=self.height, command=self.__make_callback)
+            self.__tk_object = tk.Listbox(window, width= self.width, height=self.height)
+            for i in range(len(self.values)):
+                self.__tk_object.insert(i+1, self.values[i])
+            self.__tk_object.select_set(self.selected_index)
         self.row = row
         self.column = column
         self.sticky = Alignment.get_sticky_value_from_alignment(alignment)
@@ -39,6 +42,14 @@ class Button():
         if self.__tk_object:
             self.__tk_object.grid(row=self.row, column=self.column, sticky=self.sticky)
             self.hidden_status = False
+
+    def get_value(self):
+        if(self.__tk_object):
+            selected_index = self.__tk_object.curselection()[0]
+            selected_value = self.values[selected_index]
+            return selected_index, selected_value
+        else:
+            return self.selected_index, self.values[selected_value]
 
     def is_disabled(self):
         return self.__tk_object['state'] == tk.DISABLED

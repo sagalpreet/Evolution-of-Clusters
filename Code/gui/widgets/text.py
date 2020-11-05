@@ -5,10 +5,11 @@ class Text():
 
     __tk_object = None
 
-    def __init__(self, text, width=None, height=None):
+    def __init__(self, text, width=None, height=None, hidden=False):
         self.text = text
         self.width = width
         self.height = height
+        self.initially_hidden = hidden
         self.hidden_status = True
 
     def makeTkObject(self, window, row, column, alignment):
@@ -18,7 +19,8 @@ class Text():
         self.row = row
         self.column = column
         self.sticky = Alignment.get_sticky_value_from_alignment(alignment)
-        self.show()
+        if not self.initially_hidden:
+            self.show()
 
     def get_text(self):
         return self.text

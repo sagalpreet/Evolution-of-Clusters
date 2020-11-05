@@ -6,12 +6,13 @@ class CheckBox():
     __tk_object = None
     __tk_variable = None
 
-    def __init__(self, text, selected=False, width=None, height=None, callback=None):
+    def __init__(self, text, selected=False, width=None, height=None, hidden=False, callback=None):
         self.text = text
         self.selected = selected
         self.width = width
         self.height = height
         self.hidden_status = True
+        self.initially_hidden = hidden
         self.callback = callback
 
     def __make_callback(self):
@@ -26,7 +27,8 @@ class CheckBox():
         self.row = row
         self.column = column
         self.sticky = Alignment.get_sticky_value_from_alignment(alignment)
-        self.show()
+        if not self.initially_hidden:
+            self.show()
 
     def get_value(self):
         if(self.__tk_variable):

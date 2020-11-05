@@ -6,7 +6,7 @@ class Slider():
     __tk_object: tk.Scale = None
     __tk_variable: tk.DoubleVar = None
 
-    def __init__(self, min_value, max_value, default_value=None, fractional=False, thickness=None, length=None, callback=None):
+    def __init__(self, min_value, max_value, default_value=None, fractional=False, thickness=None, length=None, hidden=False, callback=None):
         self.min_value = min_value
         self.max_value = max_value
         self.fractional = fractional
@@ -14,6 +14,7 @@ class Slider():
         self.default_value = default_value if (default_value) else min_value
         self.thickness = thickness
         self.length = length
+        self.initially_hidden = hidden
         self.callback = callback
         self.hidden_status = True
 
@@ -29,7 +30,8 @@ class Slider():
         self.row = row
         self.column = column
         self.sticky = Alignment.get_sticky_value_from_alignment(alignment)
-        self.show()
+        if not self.initially_hidden:
+            self.show()
 
     def get_value(self):
         if(self.__tk_variable):
