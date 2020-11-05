@@ -11,7 +11,6 @@ class CheckBox():
         self.selected = selected
         self.width = width
         self.height = height
-        self.hidden_status = True
         self.callback = callback
 
     def __make_callback(self):
@@ -23,29 +22,14 @@ class CheckBox():
             self.__tk_variable = tk.BooleanVar(value=self.selected)
             self.__tk_object = tk.Checkbutton(window, text=self.text, variable=self.__tk_variable,
                                               width=self.width, height=self.height, command=lambda: self.__make_callback())
-        self.row = row
-        self.column = column
-        self.sticky = Alignment.get_sticky_value_from_alignment(alignment)
-        self.show()
+        self.__tk_object.grid(
+            row=row, column=column, sticky=Alignment.get_sticky_value_from_alignment(alignment))
 
     def get_value(self):
         if(self.__tk_variable):
             return self.__tk_variable.get()
         else:
             return self.selected
-
-    def is_hidden(self):
-        return self.hidden_status
-
-    def hide(self):
-        if self.__tk_object:
-            self.__tk_object.grid_forget()
-        self.hidden_status = True
-
-    def show(self):
-        if self.__tk_object:
-            self.__tk_object.grid(row=self.row, column=self.column, sticky=self.sticky)
-            self.hidden_status = False
 
     def is_disabled(self):
         return self.__tk_object['state'] == tk.DISABLED

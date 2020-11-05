@@ -2,7 +2,6 @@ from ..utils import tk, Alignment
 
 class Slider():
 
-    __tk_object = None
     __tk_object: tk.Scale = None
     __tk_variable: tk.DoubleVar = None
 
@@ -15,7 +14,7 @@ class Slider():
         self.thickness = thickness
         self.length = length
         self.callback = callback
-        self.hidden_status = True
+        self.__tk_object = None
 
     def __make_callback(self):
         if(self.callback):
@@ -26,29 +25,13 @@ class Slider():
             self.__tk_variable = tk.DoubleVar(value=self.default_value)
             self.__tk_object = tk.Scale(window, from_=self.min_value, to=self.max_value, resolution=0.0 if self.fractional else 1, tickinterval=self.tick_interval, variable=self.__tk_variable,
                                         width=self.thickness, length=self.length, orient=tk.HORIZONTAL, command=lambda _: self.__make_callback())
-        self.row = row
-        self.column = column
-        self.sticky = Alignment.get_sticky_value_from_alignment(alignment)
-        self.show()
+        self.__tk_object.grid(row=row, column=column, sticky=Alignment.get_sticky_value_from_alignment(alignment))
 
     def get_value(self):
         if(self.__tk_variable):
             return self.__tk_variable.get()
         else:
             return self.default_value
-
-    def is_hidden(self):
-        return self.hidden_status
-
-    def hide(self):
-        if self.__tk_object:
-            self.__tk_object.grid_forget()
-        self.hidden_status = True
-
-    def show(self):
-        if self.__tk_object:
-            self.__tk_object.grid(row=self.row, column=self.column, sticky=self.sticky)
-            self.hidden_status = False
 
     def is_disabled(self):
         return self.__tk_object['state'] == tk.DISABLED

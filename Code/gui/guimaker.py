@@ -6,7 +6,7 @@ from .widgets.grid import Grid
 from .widgets.option_menu import OptionMenu
 from .widgets.slider import Slider
 from .widgets.spacing import Spacing
-from .widgets.text import Text
+from .widgets.text import Text, MultilineText
 
 
 def create_gui(widgets, title='Evolution of Clusters', alignment=Alignment.Center):
