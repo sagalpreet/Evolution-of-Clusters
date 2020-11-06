@@ -24,6 +24,6 @@ def create_gui(widgets, title='Evolution of Clusters', alignment=Alignment.Cente
             for grid_x in range(len(row_of_widgets)):
                 widget = row_of_widgets[grid_x]
                 if(widget):
-                    widget.makeTkObject(
+                    widget._make_tk_object(
                         main_window, row=grid_y, column=grid_x, alignment=alignment)
     main_window.mainloop()
