@@ -70,5 +70,5 @@ create_gui([
 ```
 
 ## Known Issues
-1. Spacing does not work sometimes
-2. Alignment does not work sometimes
+1. `Spacing` does not work sometimes
+2. `Slider.disable` not working
