@@ -116,7 +116,7 @@ def add_feature_vector(G, d):
 
     return G
 
-def add_vulnerability_of_node(G, distribution, lower, upper, a = 0):
+def add_vulnerability_of_node(G, distribution, lower = 0, upper = 1, a = 0):
     '''
     Takes as input: a networkx graph, the distribution type of vulnerability - alpha's distribution, lower limit, upper limit, a(required only if distribution = 'power')
     Gives output: a networkx graph with vulnerability for each node labelled as vulnerability and can be accessed using G.nodes[i]['vulnerability']
