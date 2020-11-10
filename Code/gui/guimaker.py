@@ -2,6 +2,7 @@ from .utils import tk, Alignment
 
 from .widgets.button import Button
 from .widgets.check_box import CheckBox
+from .widgets.entry import Entry, IntegerEntry, RealEntry
 from .widgets.grid import Grid
 from .widgets.list_box import ListBox
 from .widgets.option_menu import OptionMenu
