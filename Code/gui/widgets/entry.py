@@ -54,10 +54,10 @@ class IntegerEntry(Entry):
 
     def get_value(self):
         text = super().get_value()
-        if text=='':
-            return self.default_value
-        else:
+        try:
             return int(text)
+        except:
+            return self.default_value
 
 class RealEntry(Entry):
 
@@ -81,7 +81,7 @@ class RealEntry(Entry):
 
     def get_value(self):
         text = super().get_value()
-        if text=='':
-            return self.default_value
-        else:
+        try:
             return float(text)
+        except:
+            return self.default_value
