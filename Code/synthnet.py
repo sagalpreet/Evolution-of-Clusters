@@ -115,3 +115,66 @@ def add_feature_vector(G, d):
         G.nodes[i]['feature'] = feature
 
     return G
+
+def add_vulnerability_of_node(G, distribution, lower = 0, upper = 1, a = 0):
+    '''
+    Takes as input: a networkx graph, the distribution type of vulnerability - alpha's distribution, lower limit, upper limit, a(required only if distribution = 'power')
+    Gives output: a networkx graph with vulnerability for each node labelled as vulnerability and can be accessed using G.nodes[i]['vulnerability']
+    '''
+
+    '''
+    Distributions: 'power', 'uniform'
+    '''
+
+    '''
+    Uniform and Power distribution will make characterstic value lie in range (lower, upper)
+    Since, the value of vulnerability must be between 0(not at all vulnerable) and 1(fully vulnerable) the lower and upper must be in accordance with this
+    '''
+
+    '''
+    This function assigns vulnerability value to each node in the graph
+    Vulnerability is just a floating point value in the range of 0 and 1
+    '''
+
+    if lower < 0:
+        raise Exception(lower + "is not a valid value for lower limit")
+    if upper > 1:
+        raise Exception(upper + "is not a valid value for upper limit")
+    if lower > upper:
+        raise Exception("Lower limit cannot be greater than the upper limit")
+
+    num_vertices = G.number_of_nodes()
+    samples = []
+    if distribution == 'uniform':
+        sample = [np.random.uniform(lower, upper)
+                    for i in range(num_vertices)]
+    elif distribution == 'power':
+        sample = np.random.power(a, num_vertices)
+        for j in range(num_vertices):
+            sample[j] = sample[j] * (upper - lower) + lower
+    else:
+        raise Exception(distribution + "is not a valid distribution type")
+    
+    samples.append(list(sample))
+
+    x = 0
+    for i in G.nodes:
+        G.nodes[i]['vulnerability'] = sample[x]
+        x += 1
+
+    return G
+
+def add_age_to_edges(G):
+    '''
+    Takes as input: a networkx graph
+    Gives output: a networkx graph with each edge having a label of age (time for which the edge has existed)
+    '''
+
+    '''
+    Whenever a new edge is added, its time is initialized to 1 and incremented with each time step
+    '''
+
+    for i in G.edges:
+        G.edges[i]['age'] = 1
+
+    return G

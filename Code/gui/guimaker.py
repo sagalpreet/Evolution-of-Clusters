@@ -3,10 +3,11 @@ from .utils import tk, Alignment
 from .widgets.button import Button
 from .widgets.check_box import CheckBox
 from .widgets.grid import Grid
+from .widgets.list_box import ListBox
 from .widgets.option_menu import OptionMenu
 from .widgets.slider import Slider
 from .widgets.spacing import Spacing
-from .widgets.text import Text, MultilineText
+from .widgets.text import Text
 
 
 def create_gui(widgets, title='Evolution of Clusters', alignment=Alignment.Center):
@@ -23,6 +24,6 @@ def create_gui(widgets, title='Evolution of Clusters', alignment=Alignment.Cente
             for grid_x in range(len(row_of_widgets)):
                 widget = row_of_widgets[grid_x]
                 if(widget):
-                    widget.makeTkObject(
+                    widget._make_tk_object(
                         main_window, row=grid_y, column=grid_x, alignment=alignment)
     main_window.mainloop()
