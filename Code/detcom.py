@@ -23,3 +23,15 @@ def get_clusters(G):
         clusters[community_dict[i]].append(i)
     
     return clusters
+    
+'''
+the above algorithm doesn't consider a complete subgraph as a community
+'''
+
+def get_connected(G):
+    '''
+    Takes as input networkx graph
+    Returns list of sets containing a connected component each
+    '''
+    components = list(nx.algorithms.components.connected_components(G))
+    return components
