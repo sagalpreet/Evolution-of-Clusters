@@ -117,24 +117,24 @@ def initialize_normal_deviation_1(value):
 
     
 
-uniform_lower_1 = Slider(1, 1000, 0, callback = initialize_uniform_lower_1)
-uniform_upper_1 = Slider(1, 1000, 0, callback = initialize_uniform_upper_1)
-uniform_lower_1_text = Text('lower')
-uniform_upper_1_text = Text('upper')
+uniform_lower_1 = Slider(1, 1000, 0, callback = initialize_uniform_lower_1, hidden = True)
+uniform_upper_1 = Slider(1, 1000, 0, callback = initialize_uniform_upper_1, hidden = True)
+uniform_lower_1_text = Text('lower', hidden = True)
+uniform_upper_1_text = Text('upper', hidden = True)
 
 
-power_lower_1 = Slider(1, 1000, 0, callback = initialize_power_lower_1)
-power_upper_1 = Slider(1, 1000, 0, callback = initialize_power_upper_1)
-power_a_1 = Slider(1, 1000, 0, callback = initialize_power_a_1)
-power_lower_1_text = Text('lower')
-power_upper_1_text = Text('upper')
-power_a_1_text = Text('a')
+power_lower_1 = Slider(1, 1000, 0, callback = initialize_power_lower_1, hidden = True)
+power_upper_1 = Slider(1, 1000, 0, callback = initialize_power_upper_1, hidden = True)
+power_a_1 = Slider(1, 1000, 0, callback = initialize_power_a_1, hidden = True)
+power_lower_1_text = Text('lower', hidden = True)
+power_upper_1_text = Text('upper', hidden = True)
+power_a_1_text = Text('a', hidden = True)
 
 
-normal_mean_1 = Slider(1, 1000, 0, callback = initialize_normal_mean_1)
-normal_deviation_1 = Slider(1, 1000, 0, callback = initialize_normal_deviation_1)
-normal_mean_1_text = Text('mean')
-normal_deviation_1_text = Text('deviation')
+normal_mean_1 = Slider(1, 1000, 0, callback = initialize_normal_mean_1, hidden = True)
+normal_deviation_1 = Slider(1, 1000, 0, callback = initialize_normal_deviation_1, hidden = True)
+normal_mean_1_text = Text('mean', hidden = True)
+normal_deviation_1_text = Text('deviation', hidden = True)
 
 
 uniform_lower_1.hide()
@@ -310,24 +310,24 @@ def initialize_normal_deviation_2(value):
 
     
 
-uniform_lower_2 = Slider(1, 1000, 0, callback = initialize_uniform_lower_2)
-uniform_upper_2 = Slider(1, 1000, 0, callback = initialize_uniform_upper_2)
-uniform_lower_2_text = Text('lower')
-uniform_upper_2_text = Text('upper')
+uniform_lower_2 = Slider(1, 1000, 0, callback = initialize_uniform_lower_2, hidden = True)
+uniform_upper_2 = Slider(1, 1000, 0, callback = initialize_uniform_upper_2, hidden = True)
+uniform_lower_2_text = Text('lower', hidden = True)
+uniform_upper_2_text = Text('upper', hidden = True)
 
 
-power_lower_2 = Slider(1, 1000, 0, callback = initialize_power_lower_2)
-power_upper_2 = Slider(1, 1000, 0, callback = initialize_power_upper_2)
-power_a_2 = Slider(1, 1000, 0, callback = initialize_power_a_2)
-power_lower_2_text = Text('lower')
-power_upper_2_text = Text('upper')
-power_a_2_text = Text('a')
+power_lower_2 = Slider(1, 1000, 0, callback = initialize_power_lower_2, hidden = True)
+power_upper_2 = Slider(1, 1000, 0, callback = initialize_power_upper_2, hidden = True)
+power_a_2 = Slider(1, 1000, 0, callback = initialize_power_a_2, hidden = True)
+power_lower_2_text = Text('lower', hidden = True)
+power_upper_2_text = Text('upper', hidden = True)
+power_a_2_text = Text('a', hidden = True)
 
 
-normal_mean_2 = Slider(1, 1000, 0, callback = initialize_normal_mean_2)
-normal_deviation_2 = Slider(1, 1000, 0, callback = initialize_normal_deviation_2)
-normal_mean_2_text = Text('mean')
-normal_deviation_2_text = Text('deviation')
+normal_mean_2 = Slider(1, 1000, 0, callback = initialize_normal_mean_2, hidden = True)
+normal_deviation_2 = Slider(1, 1000, 0, callback = initialize_normal_deviation_2, hidden = True)
+normal_mean_2_text = Text('mean', hidden = True)
+normal_deviation_2_text = Text('deviation', hidden = True)
 
 
 uniform_lower_2.hide()
@@ -510,24 +510,24 @@ def initialize_normal_deviation_3(value):
 
     
 
-uniform_lower_3 = Slider(1, 1000, 0, callback = initialize_uniform_lower_3)
-uniform_upper_3 = Slider(1, 1000, 0, callback = initialize_uniform_upper_3)
-uniform_lower_3_text = Text('lower')
-uniform_upper_3_text = Text('upper')
+uniform_lower_3 = Slider(1, 1000, 0, callback = initialize_uniform_lower_3, hidden = True)
+uniform_upper_3 = Slider(1, 1000, 0, callback = initialize_uniform_upper_3, hidden = True)
+uniform_lower_3_text = Text('lower', hidden = True)
+uniform_upper_3_text = Text('upper', hidden = True)
 
 
-power_lower_3 = Slider(1, 1000, 0, callback = initialize_power_lower_3)
-power_upper_3 = Slider(1, 1000, 0, callback = initialize_power_upper_3)
-power_a_3 = Slider(1, 1000, 0, callback = initialize_power_a_3)
-power_lower_3_text = Text('lower')
-power_upper_3_text = Text('upper')
-power_a_3_text = Text('a')
+power_lower_3 = Slider(1, 1000, 0, callback = initialize_power_lower_3, hidden = True)
+power_upper_3 = Slider(1, 1000, 0, callback = initialize_power_upper_3, hidden = True)
+power_a_3 = Slider(1, 1000, 0, callback = initialize_power_a_3, hidden = True)
+power_lower_3_text = Text('lower', hidden = True)
+power_upper_3_text = Text('upper', hidden = True)
+power_a_3_text = Text('a', hidden = True)
 
 
-normal_mean_3 = Slider(1, 1000, 0, callback = initialize_normal_mean_3)
-normal_deviation_3 = Slider(1, 1000, 0, callback = initialize_normal_deviation_3)
-normal_mean_3_text = Text('mean')
-normal_deviation_3_text = Text('deviation')
+normal_mean_3 = Slider(1, 1000, 0, callback = initialize_normal_mean_3, hidden = True)
+normal_deviation_3 = Slider(1, 1000, 0, callback = initialize_normal_deviation_3, hidden = True)
+normal_mean_3_text = Text('mean', hidden = True)
+normal_deviation_3_text = Text('deviation', hidden = True)
 
 
 uniform_lower_3.hide()
@@ -706,24 +706,24 @@ def initialize_normal_deviation_4(value):
 
     
 
-uniform_lower_4 = Slider(1, 1000, 0, callback = initialize_uniform_lower_4)
-uniform_upper_4 = Slider(1, 1000, 0, callback = initialize_uniform_upper_4)
-uniform_lower_4_text = Text('lower')
-uniform_upper_4_text = Text('upper')
+uniform_lower_4 = Slider(1, 1000, 0, callback = initialize_uniform_lower_4, hidden = True)
+uniform_upper_4 = Slider(1, 1000, 0, callback = initialize_uniform_upper_4, hidden = True)
+uniform_lower_4_text = Text('lower', hidden = True)
+uniform_upper_4_text = Text('upper', hidden = True)
 
 
-power_lower_4 = Slider(1, 1000, 0, callback = initialize_power_lower_4)
-power_upper_4 = Slider(1, 1000, 0, callback = initialize_power_upper_4)
-power_a_4 = Slider(1, 1000, 0, callback = initialize_power_a_4)
-power_lower_4_text = Text('lower')
-power_upper_4_text = Text('upper')
-power_a_4_text = Text('a')
+power_lower_4 = Slider(1, 1000, 0, callback = initialize_power_lower_4, hidden = True)
+power_upper_4 = Slider(1, 1000, 0, callback = initialize_power_upper_4, hidden = True)
+power_a_4 = Slider(1, 1000, 0, callback = initialize_power_a_4, hidden = True)
+power_lower_4_text = Text('lower', hidden = True)
+power_upper_4_text = Text('upper', hidden = True)
+power_a_4_text = Text('a', hidden = True)
 
 
-normal_mean_4 = Slider(1, 1000, 0, callback = initialize_normal_mean_4)
-normal_deviation_4 = Slider(1, 1000, 0, callback = initialize_normal_deviation_4)
-normal_mean_4_text = Text('mean')
-normal_deviation_4_text = Text('deviation')
+normal_mean_4 = Slider(1, 1000, 0, callback = initialize_normal_mean_4, hidden = True)
+normal_deviation_4 = Slider(1, 1000, 0, callback = initialize_normal_deviation_4, hidden = True)
+normal_mean_4_text = Text('mean', hidden = True)
+normal_deviation_4_text = Text('deviation', hidden = True)
 
 
 uniform_lower_4.hide()
@@ -902,24 +902,24 @@ def initialize_normal_deviation_5(value):
 
     
 
-uniform_lower_5 = Slider(1, 1000, 0, callback = initialize_uniform_lower_5)
-uniform_upper_5 = Slider(1, 1000, 0, callback = initialize_uniform_upper_5)
-uniform_lower_5_text = Text('lower')
-uniform_upper_5_text = Text('upper')
+uniform_lower_5 = Slider(1, 1000, 0, callback = initialize_uniform_lower_5, hidden = True)
+uniform_upper_5 = Slider(1, 1000, 0, callback = initialize_uniform_upper_5, hidden = True)
+uniform_lower_5_text = Text('lower', hidden = True)
+uniform_upper_5_text = Text('upper', hidden = True)
 
 
-power_lower_5 = Slider(1, 1000, 0, callback = initialize_power_lower_5)
-power_upper_5 = Slider(1, 1000, 0, callback = initialize_power_upper_5)
-power_a_5 = Slider(1, 1000, 0, callback = initialize_power_a_5)
-power_lower_5_text = Text('lower')
-power_upper_5_text = Text('upper')
-power_a_5_text = Text('a')
+power_lower_5 = Slider(1, 1000, 0, callback = initialize_power_lower_5, hidden = True)
+power_upper_5 = Slider(1, 1000, 0, callback = initialize_power_upper_5, hidden = True)
+power_a_5 = Slider(1, 1000, 0, callback = initialize_power_a_5, hidden = True)
+power_lower_5_text = Text('lower', hidden = True)
+power_upper_5_text = Text('upper', hidden = True)
+power_a_5_text = Text('a', hidden = True)
 
 
-normal_mean_5 = Slider(1, 1000, 0, callback = initialize_normal_mean_5)
-normal_deviation_5 = Slider(1, 1000, 0, callback = initialize_normal_deviation_5)
-normal_mean_5_text = Text('mean')
-normal_deviation_5_text = Text('deviation')
+normal_mean_5 = Slider(1, 1000, 0, callback = initialize_normal_mean_5,hidden = True)
+normal_deviation_5 = Slider(1, 1000, 0, callback = initialize_normal_deviation_5, hidden = True)
+normal_mean_5_text = Text('mean', hidden = True)
+normal_deviation_5_text = Text('deviation', hidden = True)
 
 
 uniform_lower_5.hide()
