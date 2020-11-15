@@ -1093,49 +1093,112 @@ def build_feature_dict():
     
 """
 
-    array to build the gui
+    constructing the gui using the widgets initialzed above
 
 """
 
-array = [
-	[Spacing(5, 5)                      ],
-	[Text('\t\tEnter the fields below to simulate your own Clauset Network! '), None            ],
-	[Text('Number of vertices'), Slider(1, 1000, 500, callback = initialize_num_vertices),
-      Text('Number of communities'), Slider(1, 1000, 500, callback = initialize_num_communities),
-      Text('Number of cross community edges'), Slider(1, 1000, 500, callback = initialize_cross_community_edges)],
-  
-    [Button("Build the Clause Network", callback=build_clauset_network)],
-    
-    
-    [OptionMenu(['uniform', 'normal', 'power'], callback = hide_unhide_1)],    
-    [uniform_lower_1_text, uniform_lower_1, uniform_upper_1_text, uniform_upper_1],
-    [power_lower_1_text, power_lower_1, power_upper_1_text, power_upper_1,power_a_1_text, power_a_1],
-    [normal_mean_1_text, normal_mean_1, normal_deviation_1_text, normal_deviation_1],
-    
-    [OptionMenu(['uniform', 'normal', 'power'], callback = hide_unhide_2)],    
-    [uniform_lower_2_text, uniform_lower_2, uniform_upper_2_text, uniform_upper_2],
-    [power_lower_2_text, power_lower_2, power_upper_2_text, power_upper_2,power_a_2_text, power_a_2],
-    [normal_mean_2_text, normal_mean_2, normal_deviation_2_text, normal_deviation_2],
-    
-    [OptionMenu(['uniform', 'normal', 'power'], callback = hide_unhide_3)],    
-    [uniform_lower_3_text, uniform_lower_3, uniform_upper_3_text, uniform_upper_3],
-    [power_lower_3_text, power_lower_3, power_upper_3_text, power_upper_3,power_a_3_text, power_a_3],
-    [normal_mean_3_text, normal_mean_3, normal_deviation_3_text, normal_deviation_3],
-    
-    [OptionMenu(['uniform', 'normal', 'power'], callback = hide_unhide_4)],    
-    [uniform_lower_4_text, uniform_lower_4, uniform_upper_4_text, uniform_upper_4],
-    [power_lower_4_text, power_lower_4, power_upper_4_text, power_upper_4,power_a_4_text, power_a_4],
-    [normal_mean_4_text, normal_mean_4, normal_deviation_4_text, normal_deviation_4],
-    
-    
-    [OptionMenu(['uniform', 'normal', 'power'], callback = hide_unhide_5)],    
-    [uniform_lower_5_text, uniform_lower_5, uniform_upper_5_text, uniform_upper_5],
-    [power_lower_5_text, power_lower_5, power_upper_5_text, power_upper_5,power_a_5_text, power_a_5],
-    [normal_mean_5_text, normal_mean_5, normal_deviation_5_text, normal_deviation_5],
-    
-    [Button("Build the Feature Dictionary", callback=build_feature_dict)],
-	[Spacing(5, 5)                      ],
-]
 
-create_gui(array, title = 'Evolution of Clusters')
+
+"""
+a helper function to return space of required size
+"""
+
+def space():
+    return Spacing(15, 15)
+
+
+heading = Grid([[Text('Enter the fields below to simulate your own Synthetic Network! ')]])
+
+head_0 = Grid([[Text('Fields to initialize the network')]])
+sliders_0 = Grid([
+        [Text('Number of vertices'), Slider(1, 1000, 500, callback = initialize_num_vertices)],
+        [Text('Number of communities'), Slider(1, 1000, 500, callback = initialize_num_communities)],
+        [Text('Number of cross community edges'), Slider(1, 1000, 500, callback = initialize_cross_community_edges)],
+        [Button("Build the Network", callback=build_clauset_network)]
+        
+    ])
+
+grid_0 = Grid([[head_0] ,[sliders_0]])
+
+heading_1 = Grid([[Text('Fields to initialize the features')]])
+
+menu_1 = Grid([[Text('Feature 1'), OptionMenu(['uniform', 'normal', 'power'], callback = hide_unhide_1)]])
+
+sliders_1= Grid([[uniform_lower_1_text, uniform_lower_1, uniform_upper_1_text, uniform_upper_1],
+    [power_lower_1_text, power_lower_1, power_upper_1_text, power_upper_1,power_a_1_text, power_a_1],
+    [normal_mean_1_text, normal_mean_1, normal_deviation_1_text, normal_deviation_1]])
+
+grid_1 = Grid([[menu_1], [sliders_1]])
+
+
+
+
+menu_2 = Grid([[Text('Feature 2'), OptionMenu(['uniform', 'normal', 'power'], callback = hide_unhide_2)]])
+
+sliders_2= Grid([[uniform_lower_2_text, uniform_lower_2, uniform_upper_2_text, uniform_upper_2],
+    [power_lower_2_text, power_lower_2, power_upper_2_text, power_upper_2,power_a_2_text, power_a_2],
+    [normal_mean_2_text, normal_mean_2, normal_deviation_2_text, normal_deviation_2]])
+
+grid_2 = Grid([[menu_2], [sliders_2]])
+
+
+menu_3 = Grid([[Text('Feature 3'), OptionMenu(['uniform', 'normal', 'power'], callback = hide_unhide_3)]])
+
+sliders_3= Grid([[uniform_lower_3_text, uniform_lower_3, uniform_upper_3_text, uniform_upper_3],
+    [power_lower_3_text, power_lower_3, power_upper_3_text, power_upper_3,power_a_3_text, power_a_3],
+    [normal_mean_3_text, normal_mean_3, normal_deviation_3_text, normal_deviation_3]])
+
+grid_3 = Grid([[menu_3], [sliders_3]])
+ 
+
+menu_4 = Grid([[Text('Feature 4'), OptionMenu(['uniform', 'normal', 'power'], callback = hide_unhide_4)]])
+
+sliders_4= Grid([[uniform_lower_4_text, uniform_lower_4, uniform_upper_4_text, uniform_upper_4],
+    [power_lower_4_text, power_lower_4, power_upper_4_text, power_upper_4,power_a_4_text, power_a_4],
+    [normal_mean_4_text, normal_mean_4, normal_deviation_4_text, normal_deviation_4]])
+
+grid_4 = Grid([[menu_4], [sliders_4]])
+
+
+menu_5 = Grid([[Text('Feature 5'), OptionMenu(['uniform', 'normal', 'power'], callback = hide_unhide_5)]])
+
+sliders_5= Grid([[uniform_lower_5_text, uniform_lower_5, uniform_upper_5_text, uniform_upper_5],
+    [power_lower_5_text, power_lower_5, power_upper_5_text, power_upper_5,power_a_5_text, power_a_5],
+    [normal_mean_5_text, normal_mean_5, normal_deviation_5_text, normal_deviation_5]])
+
+grid_5 = Grid([[menu_5], [sliders_5]])
+
+
+
+
+create_gui([
+    
+    [None   ,   None    ,   heading ,  None  ,  None  ,    None   , None   ],
+    
+    [None   ,    None   ,   None ,  space()  ,  None  ,    None   , None   ],
+    
+    [None   ,    grid_0   ,   None ,  None  ,  None  ,    None   , None   ],
+    
+    [None   ,    None   ,   None ,  space()  ,  None  ,    None   , None   ],
+    
+    [None   ,   heading_1    ,  None  ,  None  ,  None  ,    None   , None   ],
+
+    [None   ,    None   ,   None ,  space()  ,  None  ,    None   , None   ],    
+    
+    [None   ,    grid_1   , None   ,  grid_2  ,  None  ,   None   , None   ],
+    
+    [None   ,    grid_3   ,   None ,  grid_4  ,  None  ,   None   , None   ],    
+    
+    [None   ,    grid_5   ,   None , None  ,  None  ,    None   , None   ],
+
+    [None   ,    None   ,   None ,  space()  ,  None  ,    None   , None   ],    
+    
+    [None   ,     Button("Build the Feature Dictionary", callback=build_feature_dict)   ,   None , None  ,  None  ,    None   , None   ],
+    
+    [None   ,    None   ,   None ,  space()  ,  None  ,    None   , None   ],
+    
+    
+])
+
+
 
