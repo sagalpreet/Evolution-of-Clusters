@@ -11,8 +11,8 @@ from usagsp import *
 
 n = 100
 G = get_empty_graph(100)
-af(G)
-av(G)
+af(G) # add features, all uniform distributions from 0 to 1
+av(G) # add vulnerability, you can do av(G, 0.3, 0.8), uniform distribution
 
 threshold = 0.8
 
