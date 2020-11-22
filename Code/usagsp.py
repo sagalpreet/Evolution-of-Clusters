@@ -13,6 +13,18 @@ def av(G, l=0, u=1):
 
 def aa(G):
     G = add_age_to_edges(G)
+   
+def make_init_connections(G, threshold=0.5):
+    nodes = list(G.nodes)
+    for i in range(len(nodes)-1):
+        for j in range(i+1, len(nodes)):
+            x1, x2 = G.nodes[nodes[i]]['feature'], G.nodes[nodes[j]]['feature']
+            prod = (x1*x2)/(np.linalg.norm(x1)*np.linalg.norm(x2))
+            commonality = np.sum(prod)
+            if(commonality>threshold):
+                G.add_edge(nodes[i], nodes[j])
+
+
 
 def show(G):
     nx.draw(G, with_labels=True)
