@@ -25,5 +25,5 @@ H = G.copy()
 H = simulate_one_time_step(H, threshold, 1) # Run this as many times as you want
 
 # Summary of commonness between different clusters
-ppanalyse(analyse(H, get_clusters(H)), np.mean)
+ppanalyse(analyse(H, get_clusters(H)), np.mean) # Gives mean commonness between clusters
 ```
